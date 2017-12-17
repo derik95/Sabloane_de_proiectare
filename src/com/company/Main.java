@@ -9,22 +9,21 @@ import com.company.ElementImplementation.Visitor.Visitor;
 
 public class Main {
 
-    public static void main(String[] args) {
-        builder();
-        visitor();
-    }
+	public static void main(String[] args) {
+		builder();
+		visitor();
+	}
 
-    public static void visitor()
-    {
-        Element book = new Section();
-        Visitor statistics = new DocumentStatistics();
-        book.accept(statistics);
-    }
+	public static void visitor() {
+		Element book = new Section();
+		Visitor statistics = new DocumentStatistics();
+		book.accept(statistics);
+	}
 
-    public static void builder()
-    {
-        IBuilder builder = new JSONBuilder("C:\\Users\\ERIK\\eclipse-workspace\\Sabloane_de_proiectare\\src\\com\\company\\book.json").buildPart();
-        Element book = builder.getResult();
-        book.print();
-    }
+	public static void builder() {
+		IBuilder builder = new JSONBuilder(
+				"C:\\Users\\ERIK\\eclipse-workspace\\Sabloane_de_proiectare\\src\\com\\company\\book.json").buildPart();
+		Element book = builder.getResult();
+		book.print();
+	}
 }

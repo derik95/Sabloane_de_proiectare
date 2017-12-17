@@ -6,10 +6,10 @@ import com.company.ElementImplementation.Visitor.Visitor;
 
 import java.util.ArrayList;
 
-public class Book extends IterableElement{
+public class Book extends IterableElement {
 
-    public Book() {
-        super(null);
-    }
+	public Book() {
+		super(null);
+	}
 
 }

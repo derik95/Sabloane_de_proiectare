@@ -7,11 +7,11 @@ import com.company.ElementImplementation.Visitor.Visitor;
 import java.util.ArrayList;
 
 public class Chapter extends IterableElement {
-    public Chapter(ArrayList<Element> elements) {
-        super(elements);
-    }
+	public Chapter(ArrayList<Element> elements) {
+		super(elements);
+	}
 
-    @Override
-    public void accept(Visitor visitor) {
-    }
+	@Override
+	public void accept(Visitor visitor) {
+	}
 }

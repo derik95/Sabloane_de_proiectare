@@ -7,19 +7,20 @@ import com.company.ElementImplementation.Visitor.Visitor;
 import java.util.ArrayList;
 
 public class Section extends IterableElement {
-    private String title;
-    public Section() {
-        super(null);
-    }
+	private String title;
 
-    public Section( String title) {
-        super(null);
-        this.title = title;
-    }
+	public Section() {
+		super(null);
+	}
 
-    @Override
-    public void print() {
-        System.out.print(title);
-        super.print();
-    }
+	public Section(String title) {
+		super(null);
+		this.title = title;
+	}
+
+	@Override
+	public void print() {
+		System.out.print(title);
+		super.print();
+	}
 }
