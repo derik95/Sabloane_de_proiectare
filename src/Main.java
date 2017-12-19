@@ -8,8 +8,8 @@ import Builder.JSONBuilder;
 public class Main {
 
 	public static void main(String[] args) {
-		builder();
 		visitor();
+		builder();
 	}
 
 	public static void visitor() {
@@ -19,8 +19,8 @@ public class Main {
 	}
 
 	public static void builder() {
-		IBuilder builder = new JSONBuilder(
-				"C:\\Users\\ERIK\\eclipse-workspace\\Sabloane_de_proiectare\\src\\book.json").buildPart();
+		IBuilder builder = new JSONBuilder("C:\\Users\\ERIK\\eclipse-workspace\\Sabloane_de_proiectare\\src\\book.json")
+				.buildPart();
 		Element book = builder.getResult();
 		book.print();
 	}

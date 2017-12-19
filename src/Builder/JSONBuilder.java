@@ -13,10 +13,15 @@ import java.io.FileReader;
 public class JSONBuilder implements IBuilder {
 
 	private String fileName;
-	private Element result;
+	private Element book;
 
 	public JSONBuilder(String fileName) {
 		this.fileName = fileName;
+	}
+
+	@Override
+	public Element getResult() {
+		return book;
 	}
 
 	@Override
@@ -24,8 +29,8 @@ public class JSONBuilder implements IBuilder {
 		JSONParser parser = new JSONParser();
 		try {
 			JSONObject jsonObject = (JSONObject) parser.parse(new FileReader(fileName));
-			;
-			result = GetElement(jsonObject);
+
+			book = getElement(jsonObject);
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -33,37 +38,42 @@ public class JSONBuilder implements IBuilder {
 		return this;
 	}
 
-	private Element GetElement(JSONObject jsonObject) {
+	private Element getElement(JSONObject jsonObject) {
 		String type = (String) jsonObject.get("class");
 		switch (type) {
+
 		case "Section": {
 			String title = (String) jsonObject.get("title");
 			Section section = new Section(title);
-			JSONArray childrensAsJson = (JSONArray) jsonObject.get("children");
-			for (int i = 0; i < childrensAsJson.size(); i++)
-				section.addElement(GetElement((JSONObject) childrensAsJson.get(i)));
+			
+			JSONArray childrens = (JSONArray) jsonObject.get("children");
+			for (int i = 0; i < childrens.size(); i++)
+				section.addElement(getElement((JSONObject) childrens.get(i)));
+			
 			return section;
 		}
+
 		case "Paragraph": {
 			String text = (String) jsonObject.get("text");
+			
 			return new Paragraph().setText(text);
 		}
+
 		case "ImageProxy": {
 			String url = (String) jsonObject.get("url");
+			
 			return new ImageProxy(url);
 		}
+
 		case "Image": {
 			String url = (String) jsonObject.get("url");
+			
 			return new Image(url);
 		}
+
 		default:
 			return null;
 		}
 	}
 
-	@Override
-	public Element getResult() {
-		return result;
-	}
-	
 }
