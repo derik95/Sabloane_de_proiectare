@@ -12,18 +12,18 @@ import java.io.FileReader;
 
 public class JSONBuilder implements IBuilder {
 
-	private String filName;
+	private String fileName;
 	private Element result;
 
 	public JSONBuilder(String fileName) {
-		this.filName = fileName;
+		this.fileName = fileName;
 	}
 
 	@Override
 	public IBuilder buildPart() {
 		JSONParser parser = new JSONParser();
 		try {
-			JSONObject jsonObject = (JSONObject) parser.parse(new FileReader(filName));
+			JSONObject jsonObject = (JSONObject) parser.parse(new FileReader(fileName));
 			;
 			result = GetElement(jsonObject);
 
